@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Week4_Excercise24</title>
+        <style>
+            body{  
+                font-family: Calibri, Helvetica, sans-serif;  
+                background: #59b0d8;  
+            }  
+            hr {  
+            border: 1px solid #f1f1f1;  
+            margin-bottom: 25px;  
+        }  
+        table{
+            background:beige;
+            padding:8rem;
+        }
+        </style>
+	</head>
+	<body>
+        <form method="get" autocomplete="on" id="temparature" >
+            <center>  <h1 style="color:darkblue;">Temperature Convertor</h1> </center> 
+            <hr> 
+			<table align="center" border=0>
+				<tr>
+					<td> 
+                        <input style="height:3em;width:15em;" type="number" class="input" placeholder= "Temperature to be converted" size="15" required />     
+                    </td>
+                    <td>
+                        <select onchange="convert()" style="height:3em;" class="inOp">
+							<option>K</option>
+							<option>F</option>
+							<option >C</option>
+						</select>
+                    </td> 
+				</tr>
+                <tr>
+					<td> 
+                        <input style="height:3em;width:15em;" type="text" id="output" placeholder="Converted Temperature" size="20" readonly/>     
+                    </td>
+                    <td>
+                        <select style="height:3em;" class="outOp">
+							<option>K</option>
+							<option>F</option>
+							<option >C</option>
+						</select>
+                    </td>   
+				</tr>
+			</table>
+		</form><br>
+        <!-- <button onclick="convert()" style="margin-left:38rem;color:blue;font-size:20px;font-family: monospace;background:blanchedalmond;border-radius: 0.4em;padding:1em;">Convert</button> -->
+        <script>
+            function convert()
+            {
+                form=document.getElementById('temparature');
+                input=form.elements[0].value;
+                inOp=form.elements[1].value;
+                outOp=form.elements[3].value;
+                if(inOp=='F' && outOp=='C')
+                {
+                    res=(input-32)*5/9;
+                }
+                else if(inOp=='C' && outOp=='F')
+                {
+                    res=(input*9/5)+32;
+                }
+                else if(inOp=='C' && outOp=='K')
+                {
+                    res=parseInt(input)+273;
+                }
+                else if(inOp=='K' && outOp=='C')
+                {
+                    res=input-273;
+                }
+                else if(inOp=='K' && outOp=='F')
+                {
+                    res=((input-273)*9/5)+32;
+                }
+                else if(inOp=='F' && outOp=='K')
+                {
+                    res=((input-32)*5/9)+273;
+                }
+                else if(inOp=='K' && outOp=='K')
+                {
+                    res=input;
+                }
+                else if(inOp=='F' && outOp=='F')
+                {
+                    res=input;
+                }
+                else if(inOp=='C' && outOp=='C')
+                {
+                    res=input;
+                }
+                
+                form.elements[2].value=res;
+            }
+        </script>
+	</body>
+</html>

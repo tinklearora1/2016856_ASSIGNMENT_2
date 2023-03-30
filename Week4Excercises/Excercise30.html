@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess the Number!</title>
+<style>
+    *{
+        box-sizing:border-box;
+    }
+    body {
+        background-color: #dad4f7;
+    }
+    #histogram{
+        font-family:'Courier New', Courier, monospace;
+        text-align: center;
+        color: #ffffff;
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: 2em;
+        width: 15em;
+        height:13em;
+        background: linear-gradient(-240deg, #8468ff 70%, #785bf7 70%);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 60%;
+        left: 50%;
+        padding: 4.5em 1.3em;
+        border-radius: 0.4em;
+        box-shadow: 0 1.3em 1.8em blue;
+        border:solid 2px darkblue;
+    }
+    .icon
+    {
+      width:4em;
+      height:4em;
+      border:solid 2px darkblue;
+      background: linear-gradient(#2e14a3, #b1a9d6);
+      color:black;
+      position:absolute;
+      border-radius:8em;
+      left:170px;
+      top:-15%;
+      transform:rotate(25deg);
+    }
+    img
+    {
+      border-radius:2em;
+      top:-2%;
+      left:-2px;
+      height:4em;
+      width:4em;
+      position:absolute;
+    }
+</style>
+<script type="text/javascript">
+  var number = generateNewValue();
+  
+  function generateNewValue()
+  {
+    return Math.floor(1000*Math.random())+1;
+  }
+  
+  function guess()
+  {
+    if (document.getElementById("playerNumber").value == undefined || document.getElementById("playerNumber").value.trim() == "" || isNaN(document.getElementById("playerNumber").value))
+    {
+      alert("Please type a number");
+      document.getElementById("playerNumber").focus();
+      return false;
+    }
+    if (parseInt(document.getElementById("playerNumber").value) > number)
+    {
+      alert("Too high\n\nTry again.");
+    }
+    else if (parseInt(document.getElementById("playerNumber").value) < number)
+    {
+      alert("Too low\n\nTry again.");
+    }
+    else
+    {
+      alert("Congratulations!!\n\nYou guessed the number Right.");
+      number = generateNewValue();
+    }
+    document.getElementById("playerNumber").value = "";
+    document.getElementById("playerNumber").focus();
+  }
+</script>
+</head>
+<body>
+  <h2 align="center" style="font-size:30px;color:blue;font-family:monospace;">Guess the number between 1 and 1000!!</h2>
+  <hr color="darkblue" size="5">
+  <div id="histogram">
+    <label for="playerNumber">Type a number</label><br><input style="height:3em;width:15em;" type="number" id="playerNumber" value="" size="10"><br><br>
+    <button onclick="guess()" style="color:blue;font-size:20px;font-family: monospace;background:blanchedalmond;border-radius: 0.4em;padding:1em;">Submit the guess</button>
+    <div class="icon"><img src="images/shruti_image.png" /></div>
+  </div>
+</body>
+</html>
